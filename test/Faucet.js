@@ -27,7 +27,7 @@ describe("Faucet contract", function () {
     it("Should fail if withdraw amount is more than 0.25 ETH", async function () {
       const { add1, faucet } = await loadFixture(deployFaucetFixture);
       const withdrawAmount = ethers.parseEther("1.0");
-      expect(await faucet.connect(add1).withdraw(withdrawAmount)).to.be.revertedWith("Exceeds maximum withdraw limit");
+      await expect(faucet.connect(add1).withdraw(withdrawAmount)).to.be.revertedWith("Exceeds maximum withdraw limit");
     });
   });
 
